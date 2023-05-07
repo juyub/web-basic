@@ -7,50 +7,33 @@
     <title>Document</title>
 
     <style>
-      .color {
-        color: blue;
-      }
-      .center {
-        text-align: center;
-      }
-      .left {
-        text-align: left;
-      }
-      .right {
-        text-align: right;
-      }
-      .ol {
-        text-decoration: overline;
-      }
-      .l-t {
-        text-decoration: line-through;
-      }
-      .ul {
-        text-decoration: underline;
-      }
-      .olul {
-        text-decoration: overline underline;
-      }
-      div.c {
-        text-indent: 50px;
-      }
+      .color { color: blue; }
+      
+      #center { text-align: center; }
+      #left { text-align: left; }
+      #right { text-align: right; }
+      
+      .tdeco { text-decoration: overline line-through underline; }
+
+      #up { text-transform: uppercase; }
+      #cap { text-transform: capitalize; }
+      #low { text-transform: lowercase; }
+      
+      div.c {text-indent: 50px;}
     </style>
   </head>
   <body>
     <div class="color">나는 아이언맨이다</div>
     <hr />
-    <div class="center">쟤는 토르다</div>
-    <div class="left">쟤는 토르다</div>
-    <div class="right">쟤는 토르다</div>
+    <div id="left">쟤는 토르다</div>
+    <div id="center">쟤는 토르다</div>
+    <div id="right">쟤는 토르다</div>
     <hr />
-    <div>
-      <span class="ol">쟈는 캡틴 아메카다</span>
-      <span class="l-t">쟈는 캡틴 아메카다</span>
-    </div>
-    <div>
-      <span class="ul">쟈는 캡틴 아메카다</span>
-      <span class="olul">쟈는 캡틴 아메카다</span>
-    </div>
+    <div class="tdeco">쟈는 캡틴 아메카다</div>
+    <hr>
+    <div id="up">im am groot</div>
+    <div id="cap">im am groot</div>
+    <div id="low">im am groot</div>
     <hr />
     <div class="c">나는 구르트다</div>
   </body>
