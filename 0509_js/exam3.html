@@ -40,7 +40,7 @@
   <body>
     <div id="input-container">
       <input type="text" id="input" placeholder="텍스트를 입력하세요" />
-      <button id="submit" onclick="addText(); changeColor()">입력</button>
+      <button id="submit" onclick="addText()">입력</button>
     </div>
     <div id="text"></div>
     <div id="button-container">
@@ -70,6 +70,7 @@
           return;
         }
         text.textContent = value;
+        changeColor();
       }
 
       function changeColor() {

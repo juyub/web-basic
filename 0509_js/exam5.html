@@ -25,13 +25,28 @@
   </head>
   <body>
     <div id="button-container">
-      <button id="red" class="color-button" onmouseover="changeRedColor()">
+      <button
+        id="red"
+        class="color-button"
+        onmouseover="changeRedColor()"
+        onmouseleave="changeColor()"
+      >
         html
       </button>
-      <button id="blue" class="color-button" onmouseover="changeBlueColor()">
+      <button
+        id="blue"
+        class="color-button"
+        onmouseover="changeBlueColor()"
+        onmouseleave="changeColor()"
+      >
         css
       </button>
-      <button id="green" class="color-button" onmouseover="changeGreenColor()">
+      <button
+        id="green"
+        class="color-button"
+        onmouseover="changeGreenColor()"
+        onmouseleave="changeColor()"
+      >
         javascript
       </button>
     </div>
@@ -60,6 +75,14 @@
         red.style.backgroundColor = "grey";
         blue.style.backgroundColor = "grey";
         green.style.backgroundColor = "white";
+      }
+      function changeColor() {
+        red.style.backgroundColor = "grey";
+        blue.style.backgroundColor = "grey";
+        green.style.backgroundColor = "grey";
+        red.style.color = "white";
+        blue.style.color = "white";
+        green.style.color = "white";
       }
     </script>
   </body>
