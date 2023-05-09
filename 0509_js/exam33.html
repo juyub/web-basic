@@ -5,109 +5,110 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
     <style>
-      #input-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 150px;
-      }
-      #input {
-        margin-right: 10px;
-      }
       #text {
-        font-size: 100px;
+        font-size: 36px;
         text-align: center;
-        margin-top: 50px;
       }
       #button-container {
-        margin-top: 50px;
+        margin-top: 20px;
         display: flex;
         justify-content: center;
       }
       .color-button {
         margin: 0 10px;
         padding: 10px 20px;
-        background-color: white;
         color: white;
         font-size: 16px;
+        font-weight: bold;
         border: none;
         border-radius: 5px;
+        cursor: pointer;
+      }
+      #red {
+        background-color: red;
+      }
+      #blue {
+        background-color: blue;
+      }
+      #green {
+        background-color: green;
+      }
+      #input-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #input {
+        margin-right: 10px;
       }
     </style>
   </head>
   <body>
     <div id="input-container">
       <input type="text" id="input" placeholder="텍스트를 입력하세요" />
-      <button id="submit" onclick="addText(); changeColor()">입력</button>
+      <button id="submit">입력</button>
     </div>
     <div id="text"></div>
     <div id="button-container">
-      <button id="red" class="color-button" onclick="changeRedColor()">
-        빨강
-      </button>
-      <button id="blue" class="color-button" onclick="changeBlueColor()">
-        파랑
-      </button>
-      <button id="green" class="color-button" onclick="changeGreenColor()">
-        초록
-      </button>
+      <button id="red" class="color-button">빨강</button>
+      <button id="blue" class="color-button">파랑</button>
+      <button id="green" class="color-button">초록</button>
     </div>
-
     <script>
       const input = document.getElementById("input");
-      const text = document.getElementById("text");
       const submitButton = document.getElementById("submit");
+      const text = document.getElementById("text");
       const redButton = document.getElementById("red");
       const blueButton = document.getElementById("blue");
       const greenButton = document.getElementById("green");
 
-      function addText() {
+      submitButton.addEventListener("click", () => {
         const value = input.value;
         if (!value) {
           alert("텍스트값을 입력해 주세요");
           return;
         }
         text.textContent = value;
-      }
+      });
 
-      function changeColor() {
-        document.getElementById("red").style.backgroundColor = "grey";
-        document.getElementById("blue").style.backgroundColor = "grey";
-        document.getElementById("green").style.backgroundColor = "grey";
-      }
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          submitButton.click();
+        }
+      });
 
-      function changeRedColor() {
+      redButton.addEventListener("click", () => {
         alert("빨강색으로 변경됩니다.");
-        text.style.color = "Red";
-      }
-      function changeBlueColor() {
+        text.style.color = "red";
+      });
+
+      blueButton.addEventListener("click", () => {
         alert("파랑색으로 변경됩니다.");
-        text.style.color = "Blue";
-      }
-      function changeGreenColor() {
+        text.style.color = "blue";
+      });
+
+      greenButton.addEventListener("click", () => {
         alert("초록색으로 변경됩니다.");
-        text.style.color = "Green";
-      }
-      // <이벤트 핸들러를 이용한 코드>
-      // 입력값이 바로 출력됨
-      // input.addEventListener("input", () => {
-      //       text.textContent = input.value;
-      // });
-
-      // submitButton.addEventListener("click", addText);
-
-      // function changeColor() {
-      //   let button = document.getElementsByClassName("color-button");
-      //   button.style.backgroundColor = "#ff0000";
-      // }
-      // function changeColor() {
-      //   let buttons = document.querySelectorAll(".color-button");
-      //   buttons.forEach((button) => {
-      //     button.style.backgroundColor = "grey";
-      //   });
-      // }
+        text.style.color = "green";
+      });
     </script>
   </body>
 </html>
+
+<!-- 1. 텍스트 값을 입력 받고
+2. 값이 없으면 “텍스트값을 입력해 주세요” 
+경고창을 띄우고
+3. 값이 있으면 가운데 크게 텍스트를 표시해 주고
+4. 바로 아래에 빨강
+/파랑
+/초록 글자가 쓰여진
+버튼이 생긴다
+.
+5. 빨강 파랑 초록
+이 쓰여진 버튼을 누르면
+6.
+“무슨무슨 색으로 변경됩니다.” 라고 경고창이
+뜨면서
+7. 입력된 텍스트의 색이 변경되게 해봅시다. -->
