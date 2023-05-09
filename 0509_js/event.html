@@ -21,6 +21,11 @@
         let box = document.getElementById("box");
         box.style.backgroundColor = "#ffff00";
       }
+
+      function showAlert(Element) {
+        console.log(Element.textContent);
+        alert(Element.textContent);
+      }
     </script>
   </head>
   <body>
@@ -32,5 +37,8 @@
       onmouseover="changeBlueColor()"
       onmouseleave="changeYellowColor()"
     ></div>
+
+    <div class="big" onclick="showAlert(this)">Hello World</div>
+    <div onclick="showAlert2()">안녕하세요</div>
   </body>
 </html>
