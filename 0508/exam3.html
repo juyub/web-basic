@@ -8,11 +8,17 @@
 
     <style>
       html {
-        background-image: url("/0508/우주.jpg");
+        background-image: url("우주.jpg");
         background-size: cover;
         background-repeat: no-repeat;
       }
-
+      #a {
+        float: left;
+        margin-left: 15px;
+        margin-top: 12px;
+        color: white;
+        filter:invert(100%);
+      }
       #div {
         background-color: black;
         border: 1px black solid;
@@ -23,7 +29,6 @@
         display: inline-block;
         margin: 10px;
       }
-
       #div2 {
         text-align: center;
         color: white;
@@ -37,7 +42,6 @@
         margin: 0 auto;
         margin-top: 50px;
       }
-
       a {
         text-decoration-line: none;
         color: aliceblue;
@@ -45,6 +49,7 @@
     </style>
   </head>
   <body>
+    <div id="a"><img src="별.png" style="width: 18px;"></div>
     <div id="div">
       <span class="span"><a href="">Home</a></span>
       <span class="span"><a href="">About</a></span>
@@ -56,6 +61,6 @@
       안녕하세요. 제 이름은
       <span style="color: rgb(255, 23, 224)">이주엽입니다.</span>
     </div>
-    <div id="div3">View my work <img src="별.png" style="width: 12px" /></div>
+    <div id="div3"><a href="">View my work <img src="화살표.png" style="width: 15px" /></a></div>
   </body>
 </html>
