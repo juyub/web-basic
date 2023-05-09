@@ -13,14 +13,18 @@
       }
     </style>
     <script>
-      function changeBlueColor() {
+      function changeColor(color) {
         let box = document.getElementById("box");
-        box.style.backgroundColor = "#0000ff";
+        box.style.backgroundColor = color;
       }
-      function changeYellowColor() {
-        let box = document.getElementById("box");
-        box.style.backgroundColor = "#ffff00";
-      }
+      // function changeBlueColor() {
+      //   let box = document.getElementById("box");
+      //   box.style.backgroundColor = "#0000ff";
+      // }
+      // function changeYellowColor() {
+      //   let box = document.getElementById("box");
+      //   box.style.backgroundColor = "#ffff00";
+      // }
 
       function showAlert(Element) {
         console.log(Element.textContent);
@@ -34,8 +38,8 @@
 
     <div
       id="box"
-      onmouseover="changeBlueColor()"
-      onmouseleave="changeYellowColor()"
+      onmouseover="changeColor('#ff0000')"
+      onmouseleave="changeColor('#ffff00')"
     ></div>
 
     <div class="big" onclick="showAlert(this)">Hello World</div>
