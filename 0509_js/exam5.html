@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #button-container {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+      }
+      .color-button {
+        margin: 10px;
+        color: white;
+        background-color: grey;
+        font-size: 20px;
+        width: 150px;
+        line-height: 3;
+        border: 1px black solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="button-container">
+      <button id="red" class="color-button" onmouseover="changeRedColor()">
+        html
+      </button>
+      <button id="blue" class="color-button" onmouseover="changeBlueColor()">
+        css
+      </button>
+      <button id="green" class="color-button" onmouseover="changeGreenColor()">
+        javascript
+      </button>
+    </div>
+
+    <script>
+      function changeRedColor() {
+        red.style.color = "black";
+        blue.style.color = "white";
+        green.style.color = "white";
+        red.style.backgroundColor = "white";
+        blue.style.backgroundColor = "grey";
+        green.style.backgroundColor = "grey";
+      }
+      function changeBlueColor() {
+        red.style.color = "white";
+        blue.style.color = "black";
+        green.style.color = "white";
+        red.style.backgroundColor = "grey";
+        blue.style.backgroundColor = "white";
+        green.style.backgroundColor = "grey";
+      }
+      function changeGreenColor() {
+        red.style.color = "white";
+        blue.style.color = "white";
+        green.style.color = "black";
+        red.style.backgroundColor = "grey";
+        blue.style.backgroundColor = "grey";
+        green.style.backgroundColor = "white";
+      }
+    </script>
+  </body>
+</html>
