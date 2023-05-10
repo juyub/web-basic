@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.js"
+      integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // onload
+      // 이름없는 함수(익명 함수, annonymous function)
+      $(function () {
+        // alert("hello");
+
+        // let box = document.getElementById('box');
+
+        // let box = $("box");
+
+        $("#box")
+          .click(function () {
+            console.log("click!");
+
+            // $(this).html("<h1>꾸겨넣기</h1>");
+            // $(this).text("<h1>꾸겨넣기</h1>");
+            $(this).append("<h1>꾸겨넣기</h1>");
+            $(this).addClass("small-text");
+          })
+          .mouseover(() => {
+            console.log("mouse over");
+            // 람다 - event.target
+            $(event.target).css("background-color", "#0000ff");
+            $(event.target).attr("class", "border");
+          })
+          .mouseleave(function () {
+            console.log("mouse leave");
+            // function () - this
+            $(this).css("background-color", "#00ff00");
+            $(this).attr("class", "");
+          });
+      });
+
+      // 화살표 표기법 arrow function
+      // 람다식 lamda expression
+      // $(() => {
+      //   alert("hello");
+      // });
+    </script>
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+      .border {
+        border: 2px black dotted;
+      }
+      .small-text {
+        font-size: small;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello</h1>
+
+    <div id="box" class=""></div>
+  </body>
+</html>

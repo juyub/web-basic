@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.js"
+      integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $(function () {
+        $("#submit").click(function () {
+          let name = prompt("작성자명");
+          let inputText = $("#input").val();
+          $("#div2").append(
+            `<div class="div3"><b>${name}</b> ${inputText}</div>`
+          );
+          $("#input").val("");
+        });
+      });
+    </script>
+    <style>
+      #input {
+        color: black;
+        width: 242px;
+        padding: 10px;
+        margin: 0;
+        z-index: 1;
+      }
+      #div2 {
+        background-color: rgb(182, 179, 179);
+        width: 243px;
+        padding: 10px;
+        margin-left: 1px;
+      }
+      .div3 {
+        background-color: white;
+        margin: 10px;
+        padding: 10px;
+      }
+      #submit {
+        margin-top: 15px;
+      }
+      ::placeholder {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div2">
+      <div class="div3"><b>박지성</b> SBS에서 월드컵보세요!</div>
+      <div class="div3"><b>안정환</b> MBC죠...</div>
+      <div class="div3"><b>이영표</b> KBS는 수신료의 가치를..</div>
+    </div>
+    <br />
+    <input type="text" id="input" placeholder="기사등록하기" />
+    <br />
+    <button id="submit">등록하기</button>
+  </body>
+</html>
