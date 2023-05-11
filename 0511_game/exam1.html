@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.js"
+      integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      #container {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border: 1px black solid;
+      }
+
+      #bmo {
+        position: relative;
+        left: 100px;
+        top: 100px;
+        width: 50px;
+        height: 50px;
+        border: 1px solid;
+        display: none;
+      }
+    </style>
+
+    <script>
+      $(function () {
+        const bmo = $("#bmo");
+        let count = 3;
+
+        gameStart();
+
+        // 키보드 이벤트 정의
+        $("html").keydown(function (e) {
+          switch (e.key) {
+            case "ArrowRight":
+              moveRight();
+              break;
+            case "ArrowLeft":
+              moveLeft();
+              break;
+          }
+          console.log(e.key);
+        });
+
+        function gameStart() {
+          countDown();
+
+          // 3초 있다가 나오기
+          setTimeout(function () {
+            bmo.show();
+          }, 3000);
+        }
+
+        function countDown() {
+          let timer = setInterval(function () {
+            console.log(count);
+            count--;
+            if (count < 0) {
+              // 인터벌 취소
+              clearInterval(timer);
+            }
+          }, 1000);
+        }
+
+        function moveRight() {
+          // 오른쪽 벽에
+          const bmoRightMargin = $("#bmo").css("left").replace("px", "");
+          if (bmoRightMargin > 0) {
+            bmo.animate({ left: "+=50px" }, 0);
+          }
+          // 보정
+          if (bmoRightMargin < 0) {
+            bmo.animate({ left: "0px" }, 0);
+          }
+        }
+
+        function moveLeft() {
+          bmo.animate({ left: "-=50px" }, 0);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <img id="bmo" src="bmo.png" alt="" />
+    </div>
+  </body>
+</html>
