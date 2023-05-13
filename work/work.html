@@ -21,7 +21,7 @@
         border: 1px black solid;
       }
 
-      /* #div1 {
+      #div1 {
         position: absolute;
         background-color: white;
         z-index: 20;
@@ -59,7 +59,7 @@
         to {
           transform: translate(-1200px, 0);
         }
-      } */
+      }
 
       #mario {
         position: absolute;
@@ -170,7 +170,7 @@
 
             if (isColliding(mario[0], enemy[0])) {
               isGameOver = true;
-              mario.stop();
+              // mario.stop();
               enemy.stop();
               missile.stop();
 
