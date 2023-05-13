@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.js"
+      integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      #container {
+        position: relative;
+        z-index: 10;
+        top: 50px;
+        left: 50px;
+        width: 800px;
+        height: 600px;
+        border: 1px black solid;
+      }
+
+      /* #div1 {
+          position: absolute;
+          background-color: white;
+          z-index: 20;
+          top: -10px;
+          left: -60px;
+          width: 59px;
+          height: 620px;
+        }
+  
+        #div2 {
+          position: absolute;
+          background-color: white;
+          z-index: 20;
+          top: -10px;
+          left: 801px;
+          width: 100%;
+          height: 620px;
+        }
+  
+        .sliding-background {
+          z-index: -1;
+          position: absolute;
+          background: url("bg.png");
+          background-size: 100% 100%;
+          width: 270%;
+          height: 600px;
+          animation: slide 30s linear infinite;
+        }
+  
+        @keyframes slide {
+          from {
+            transform: translate(0, 0);
+          }
+  
+          to {
+            transform: translate(-1200px, 0);
+          }
+        } */
+
+      #mario {
+        position: absolute;
+        left: 50px;
+        bottom: 30px;
+        width: 60px;
+        height: 80px;
+        border: 1px solid;
+      }
+
+      #enemy {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        right: 0px;
+        bottom: 35px;
+      }
+
+      #missile {
+        position: absolute;
+        width: 40px;
+        height: 30px;
+        left: 107px;
+        bottom: 40px;
+      }
+
+      #gameover_screen {
+        /* z-index: -2; */
+        position: relative;
+        text-align: center;
+        top: 200px;
+      }
+
+      #score {
+        float: right;
+      }
+    </style>
+    <script>
+      let isJumping = false;
+      let isenemyStopped = true;
+
+      function jump() {
+        if (isJumping == true) {
+          return;
+        }
+
+        isJumping = true;
+        $("#mario")
+          .animate(
+            {
+              bottom: "300px",
+            },
+            500
+          )
+          .animate(
+            {
+              bottom: "100px",
+            },
+            500,
+            function () {
+              isJumping = false;
+            }
+          );
+      }
+
+      function enemyMove() {
+        if (isenemyStopped) {
+          isenemyStopped = false;
+          $("#enemy").animate(
+            {
+              right: "120%",
+            },
+            3000,
+            function () {
+              $(this).css({
+                right: "-300px",
+              });
+              isenemyStopped = stop;
+            }
+          );
+        }
+      }
+
+      function isMarioDie() {
+        let result = false;
+
+        let marioBottom = parseInt($("#mario").css("bottom"), 10);
+        let marioRight = 100;
+        let enemyLeft = parseInt($("#enemy").css("left"), 10);
+
+        if (marioRight > enemyLeft && enemyLeft > 0 && marioBottom < 200) {
+          result = true;
+        }
+
+        return result;
+      }
+
+      $("html").keydown(function (event) {
+        if (event.key == " ") {
+          jump();
+        }
+      });
+
+      setInterval(function () {
+        enemyMove();
+
+        if (isMarioDie()) {
+          console.log("마리오 사망");
+        }
+      }, 100);
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <div class="sliding-background"></div>
+      <img id="mario" src="mario.gif" alt="" />
+      <img id="enemy" src="enemy.png" alt="" />
+      <img id="missile" src="missile.png" alt="" />
+      <div id="gameover_screen">
+        GameOver <br />
+        <input type="button" value="재시작" />
+      </div>
+      <div id="score">0</div>
+      <div id="div1"></div>
+      <div id="div2"></div>
+    </div>
+  </body>
+</html>

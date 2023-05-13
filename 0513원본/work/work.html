@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.js"
+      integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      #container {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        width: 800px;
+        height: 600px;
+        border: 1px black solid;
+      }
+
+      /* .sliding-background {
+        z-index: -1;
+        position: absolute;
+        background: url("bg.png");
+        background-size: 100% 100%;
+        width: 270%;
+        height: 600px;
+        animation: slide 5s linear infinite;
+      }
+
+      @keyframes slide {
+        from {
+          transform: translate(0, 0);
+        }
+        to {
+          transform: translate(-500px, 0);
+        }
+      } */
+
+      #mario {
+        position: absolute;
+        left: 50px;
+        bottom: 30px;
+        width: 60px;
+        height: 80px;
+        border: 1px solid;
+      }
+
+      #enemy {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        right: 0px;
+        bottom: 35px;
+      }
+      #missile {
+        position: absolute;
+        width: 40px;
+        height: 30px;
+        left: 100px;
+        bottom: 40px;
+      }
+      #gameover_screen {
+        /* z-index: -2; */
+        position: relative;
+        text-align: center;
+        top: 200px;
+      }
+
+      #score {
+        float: right;
+      }
+    </style>
+
+    <script>
+      const enemy_SPEED_MIN_EASY = 1000;
+      const enemy_SPEED_MAX_EASY = 3000;
+
+      const enemy_SPEED_MIN_HARD = 1000;
+      const enemy_SPEED_MAX_HARD = 3000;
+
+      $(function () {
+        const mario = $("#mario");
+        const enemy = $("#enemy");
+        const missile = $("#missile");
+
+        // 점프 중인지?
+        let isJumping = false;
+        let isGameOver = false;
+        let score = 0;
+
+        gameStart();
+
+        function gameStart() {
+          $("#gameover_screen").hide();
+          $("#miss ile").hide();
+
+          setKeyboardEvent();
+          enemyStart();
+
+          checkGameOver();
+        }
+
+        function isColliding(el1, el2) {
+          const rect1 = el1.getBoundingClientRect();
+          const rect2 = el2.getBoundingClientRect();
+
+          return !(
+            rect1.bottom < rect2.top ||
+            rect1.top > rect2.bottom ||
+            rect1.right < rect2.left ||
+            rect1.left > rect2.right
+          );
+        }
+
+        function checkGameOver() {
+          setInterval(function () {
+            console.log(`isGameOver:${isGameOver}`);
+
+            if (/* !isGameOver && */ isColliding(mario[0], enemy[0])) {
+              isGameOver = true;
+              mario.stop();
+              enemy.stop();
+              $("#gameover_screen").show();
+            }
+          }, 1000 / 60);
+        }
+
+        function getRandomNumber(enemyn, max) {
+          return Math.floor(Math.random() * (max - enemyn + 1)) + enemyn;
+        }
+
+        function enemyStart() {
+          // 속도 조절
+          const speed = getRandomNumber(1000, 3000);
+
+          // 적이 오른쪽에서 왼쪽으로 이동
+          enemy.animate({ right: "900px" }, speed, "linear", function () {
+            //점수 올리자
+            score += 100;
+            updateScore(score);
+
+            //적 리셋
+            enemy.css("right", "-50px");
+            // enemyStart();
+          });
+        }
+
+        function missileLaunch() {
+          $("#missile").show();
+          // 속도 조절
+          const speed = 500;
+
+          // 적이 오른쪽에서 왼쪽으로 이동
+          $("#missile").animate(
+            { left: "800px" },
+            speed,
+            "linear",
+            function () {
+              // //점수 올리자
+              // score += 100;
+              // updateScore(score);
+
+              //미사일 리셋
+              $("#missile").css("left", "60px");
+              $("#missile").hide();
+            }
+          );
+        }
+        // function launch() {
+        //   isLaunch = true;
+        //   $("#missile")
+        //     .animate({ left: "+=200px" })
+        //     .animate({ left: "-=200px" }, function () {
+        //       isLaunch = false;
+        //     });
+        // }
+
+        function updateScore(score) {
+          $("#score").text(score);
+        }
+
+        function jump() {
+          isJumping = true;
+          mario
+            .animate({ bottom: "+=200px" })
+            .animate({ bottom: "-=200px" }, function () {
+              isJumping = false;
+            });
+        }
+
+        // 키보드 이벤트 정의
+        function setKeyboardEvent() {
+          $("html").keydown(function (e) {
+            switch (e.key) {
+              case "ArrowUp":
+                if (!isJumping) {
+                  jump();
+                }
+                break;
+              case " ":
+                missileLaunch(); // missileLaunch 함수 호출
+
+                break;
+            }
+            // console.log(e.key);
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <div class="sliding-background"></div>
+      <img id="mario" src="mario.png" alt="" />
+      <img id="enemy" src="enemy.png" alt="" />
+      <img id="missile" src="missile.png" alt="" />
+      <div id="gameover_screen">
+        GameOver <br />
+        <input type="button" value="재시작" />
+      </div>
+      <div id="score">0</div>
+    </div>
+  </body>
+</html>
