@@ -1,7 +1,7 @@
 # GameMario
 
 
-![image](https://github.com/juyub/web-basic/assets/126839881/55b42437-5e45-4897-9dd6-a81cfdeb41a6)
+![image ] width : 300px ; (https://github.com/juyub/web-basic/assets/126839881/55b42437-5e45-4897-9dd6-a81cfdeb41a6)
 
 
 https://juyub.github.io/web-basic/Mario/mario.html
