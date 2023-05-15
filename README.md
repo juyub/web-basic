@@ -1,11 +1,10 @@
 # GameMario
 
 
-![image ] width : 300px ; (https://github.com/juyub/web-basic/assets/126839881/55b42437-5e45-4897-9dd6-a81cfdeb41a6)
+<img src="https://github.com/juyub/web-basic/assets/126839881/55b42437-5e45-4897-9dd6-a81cfdeb41a6" alt="image" width="600">
 
 
 https://juyub.github.io/web-basic/Mario/mario.html
-
 
 
 - W 키를 눌러 점프할 수 있습니다. 점프하여 몬스터를 피하면 +100점
