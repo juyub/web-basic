@@ -1,10 +1,14 @@
 # GameMario
 
 
+![image](https://github.com/juyub/web-basic/assets/126839881/55b42437-5e45-4897-9dd6-a81cfdeb41a6)
+
+
+https://juyub.github.io/web-basic/Mario/mario.html
 
 
 
-
-- W 키를 이용하여 점프할 수 있습니다. 점프하여 몬스터를 피하면 +100점
-- D 키를 이용하여 미사일을 발사할 수 있습니다. 미사일로 몬스터를 보내주면 +100점
-- 몬스터와 닿게 되면 GameOver 
+- W 키를 눌러 점프할 수 있습니다. 점프하여 몬스터를 피하면 +100점
+- D 키를 눌러 미사일을 발사할 수 있습니다. 미사일로 몬스터를 보내주면 +100점
+- 몬스터는 매번 랜덤한 속도록 등장합니다.
+- 몬스터에게 잡히면 GameOver 
