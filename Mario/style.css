@@ -30,7 +30,7 @@
 .sliding-background {
   z-index: -1;
   position: absolute;
-  background: url("bg.png");
+  background: url("source/bg.png");
   background-size: 100% 100%;
   width: 130%;
   height: 600px;
