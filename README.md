@@ -12,5 +12,6 @@ https://juyub.github.io/web-basic/Mario/mario.html
 - 몬스터는 매번 랜덤한 속도록 등장합니다.
 - 몬스터에게 잡히면 GameOver 
 
+
 - START 버튼을 클릭하여 게임을 시작합니다.
 - 사망시 RESTART 버튼 클릭시 처음화면으로 돌아옵니다.
