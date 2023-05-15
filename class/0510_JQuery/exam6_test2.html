@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.js"
+      integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        // 전체 선택 체크박스 클릭 이벤트
+        $("#check-all").click(function () {
+          if ($(this).is(":checked")) {
+            // 전체 선택 체크박스가 체크되었을 때
+            $(".check-item").prop("checked", true);
+          } else {
+            // 전체 선택 체크박스가 체크 해제되었을 때
+            $(".check-item").prop("checked", false);
+          }
+        });
+
+        // 각각의 선택 체크박스 클릭 이벤트
+        $(".check-item").click(function () {
+          if ($(".check-item:checked").length == $(".check-item").length) {
+            // 모든 선택 체크박스가 체크되었을 때
+            $("#check-all").prop("checked", true);
+          } else {
+            // 하나라도 선택 체크박스가 체크 해제되었을 때
+            $("#check-all").prop("checked", false);
+          }
+        });
+
+        // 로그 버튼 클릭 이벤트
+        $("#log-btn").click(function () {
+          var checkedItems = $(".check-item:checked");
+          if (checkedItems.length > 0) {
+            // 선택된 제목들을 로그로 출력
+            var logText = "";
+            checkedItems.each(function () {
+              var title = $(this).closest("tr").find("td:nth-child(2)").text();
+              logText += title + "\n";
+            });
+            $("#result").text(logText);
+          } else {
+            // 선택된 제목이 없는 경우
+            alert("선택된 제목이 없습니다.");
+          }
+        });
+      });
+    </script>
+    <style>
+      table,
+      td,
+      tr {
+        text-align: center;
+        border: 1px black solid;
+      }
+      table {
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <colgroup>
+        <col width="50px" />
+        <col width="350px" />
+        <col width="150px" />
+      </colgroup>
+      <tr>
+        <td><input type="checkbox" id="check-all" /></td>
+        <td>제목</td>
+        <td>시간</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="check-item" /></td>
+        <td>제목 1</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="check-item" /></td>
+        <td>제목 2</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="check-item" /></td>
+        <td>제목 3</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="check-item" /></td>
+        <td>제목 4</td>
+      </tr>
+    </table>
+    <br />
+    <input type="text">
+    <button>등록</button>
+    <br><br>
+    <button id="log-btn">로그</button>
+    <div id="result"></div>
+  </body>
+</html>
