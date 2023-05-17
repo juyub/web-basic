@@ -16,7 +16,7 @@
     <div id="app">
       <input type="text" placeholder="제목" v-model="query" />
       {{query}}
-      <div>아이템 {{ movies.length}} 개</div>
+      <div>아이템 {{ filterdMovies.length}} 개</div>
       <ul>
         <li v-for="movie in filterdMovies">
           <img :src="movie.posterUrl" alt="" class="poster" />
