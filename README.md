@@ -4,7 +4,7 @@
 <img src="https://github.com/juyub/web-basic/assets/126839881/55b42437-5e45-4897-9dd6-a81cfdeb41a6" alt="image" width="600">
 
 
-https://juyub.github.io/web-basic/Mario/mario.html
+<a href='https://juyub.github.io/web-basic/Mario/mario.html'>GAME START</a>
 
 
 <HR>
